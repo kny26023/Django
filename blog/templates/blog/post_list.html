@@ -6,8 +6,12 @@
     </head>
 
     <body>
+        <nav>
+            <a href="/blog/">BLOG</a>   <!--url 모양-->
+            <a href="/about_me/">ABOUT ME</a>
+        </nav>
         <h1>BLOG</h1>
-        {% for p in posts %}
+        {% for p in post_list %}    <!--views.py에 있음-->
             <hr/>
             <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
             <h4>{{ p.created_at }}</h4>
