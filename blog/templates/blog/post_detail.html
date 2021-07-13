@@ -51,6 +51,24 @@
                         <section class="mb-5">
                             {{ post.content }}
                         </section>
+                        <!-- File Download-->
+                        {% if post.file_upload %}
+                            <a type="button" class="btn btn-primary mb-3">
+                                Download : 
+                                {% if post.get_file_ext == 'pptx' %}
+                                    <i class="fas fa-file-powerpoint"></i>
+                                {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                    <i class="fas fa-file-excel"></i>
+                                {% elif post.get_file_ext == 'csv' %}
+                                    <i class="fas fa-file-csv"></i>
+                                {% elif post.get_file_ext == 'txt' %}
+                                    <i class="fas fa-file-alt"></i>
+                                {% else %}
+                                    <i class="fas fa-file"></i>
+                                {% endif %}
+                                {{ post.get_file_name }}
+                            </a>
+                        {% endif %}
                     </article>
                     <!-- Comments section-->
                     <section class="mb-5">

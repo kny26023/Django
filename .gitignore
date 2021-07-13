@@ -65,6 +65,7 @@ db.sqlite3-journal
 
 #이부분 추가
 migrations/
+_media/
 
 # Flask stuff:
 instance/
