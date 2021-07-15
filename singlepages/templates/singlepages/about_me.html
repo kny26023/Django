@@ -1,17 +1,14 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>ABOUT ME</title>
-    </head>
+{% extends 'singlepages/base.html' %}
+
+{% block head_title %}
+    ABOUT ME
+{% endblock %}
 
     <body>
-        <nav>
-            <a href="/blog">BLOG</a>
-            <a href="/about_me">ABOUT ME</a>
-        </nav>
+        {% block main_area %}
         <br/>
         <h1>ABOUT ME</h1>
         <h3>ing...</h3>
+        {% endblock %}
     </body>
 </html>
