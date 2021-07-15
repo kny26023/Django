@@ -2,7 +2,7 @@
 {% load static %}
 <html>
     <head>
-        <title>IRENE BLOG</title>
+        <title>{% block head_title %}IRENE BLOG{% endblock %}</title>
         <link href="{% static 'blog/bootstrap.min.css' %}" rel="stylesheet" media="screen"/>
         <link href="{% static 'blog/styles.css' %}" rel="stylesheet" media="screen"/>
         <script src="https://kit.fontawesome.com/8ff56bd069.js" crossorigin="anonymous"></script>
