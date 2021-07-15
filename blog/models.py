@@ -5,6 +5,12 @@ import os
 # Create your models here.
 # 여기에 data table 만들기
 
+class Category(models.Model):
+    name= models.CharField(max_length=50, unique=True)
+    slug= models.SlugField(max_length=200, unique=True, allow_unicode=True)
+    class Meta:
+        verbose_name_plural= 'Categories'
+
 class Post(models.Model):
     title= models.CharField(max_length=30)
     content= models.TextField()
@@ -17,6 +23,8 @@ class Post(models.Model):
 
     #author= models.ForeignKey(User, on_delete=models.CASCADE)   #ForeignKey-> DB 용어, models.CASCADE-> author 지우면 같이 지워지게!
     author= models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    category= models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
         return f'[{self.pk}]    {self.title} :: {self.author}'   #pk(primary key) -> id
