@@ -33,6 +33,14 @@ class PostDetail(DetailView):
     model= Post
     #template_name= 'blog/single_post_page.html'
 
+    def get_context_data(self, **kwargs):
+        context= super(PostDetail, self).get_context_data()   
+        #super: parent class의 객체를 호출하는 메소드
+        #모든 내용을 가져오는 메소드! 내가 사용하는 공간 내에서 부모 클래스를 만드는 것!
+        context['categories']= Category.objects.all()
+        context['no_category_post_count']= Post.objects.filter(category=None).count()
+        return context
+
 '''
 def single_post_page(request, pk):
     post= Post.objects.get(pk= pk)
@@ -45,3 +53,21 @@ def single_post_page(request, pk):
         }
     )
 '''
+
+def category_page(request, slug):
+    if slug== 'no_category': 
+        category= 'No category'
+        post_list= Post.objects.filter(category=None)
+    else:
+        category= Category.objects.get(slug=slug)
+        post_list= Post.objects.filter(category=category)
+    return render(
+        request, 
+        'blog/post_list.html', 
+        {
+            'post_list': post_list,
+            'categories': Category.objects.all(),
+            'no_category_post_count': Post.objects.filter(category=None),
+            'category': category
+        }
+    )
