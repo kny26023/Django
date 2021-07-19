@@ -8,8 +8,12 @@ import os
 class Category(models.Model):
     name= models.CharField(max_length=50, unique=True)
     slug= models.SlugField(max_length=200, unique=True, allow_unicode=True)
+
+    def __str__(self):
+        return self.name
+        
     class Meta:
-        verbose_name_plural= 'Categories'
+        verbose_name_plural= 'Categories'   #이름 뒤에 s 붙을 때 안 맞는 경우 바꿔주기
 
 class Post(models.Model):
     title= models.CharField(max_length=30)
